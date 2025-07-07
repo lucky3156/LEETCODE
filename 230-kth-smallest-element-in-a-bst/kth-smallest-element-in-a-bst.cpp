@@ -11,14 +11,14 @@
  */
 class Solution {
 public:
-    vector<int> inord(TreeNode* node,vector<int> &sol){
+    void inord(TreeNode* node,vector<int> &sol){
         if(!node){
-            return sol;
+            return ;
         }
         inord(node->left,sol);
         sol.push_back(node->val);
         inord(node->right,sol);
-        return sol;
+        
 
     }
     int kthSmallest(TreeNode* root, int k) {
