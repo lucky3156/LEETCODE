@@ -13,18 +13,16 @@ class Solution {
 public:
     int res=0;
     int distributeCoins(TreeNode* root) {
-        vector<int> vals=func(root);
+        int sol=func(root);
         return res;
     }
-    vector<int> func(TreeNode* node){
+    int func(TreeNode* node){
         if(!node){
-            return {0,0};
+            return 0;
         }
-        vector<int> left_vals= func(node->left);
-        vector<int> right_vals= func(node->right);
-        int size=1+left_vals[0]+right_vals[0];
-        int coins=node->val + left_vals[1] + right_vals[1];
-        res+=abs(size-coins);
-        return {size,coins};
+        int left=func(node->left);
+        int right=func(node->right);
+        res+=abs(left)+abs(right);
+        return node->val - 1 + left + right;
     }
 };
